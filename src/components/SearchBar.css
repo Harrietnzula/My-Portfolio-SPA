@@ -1,0 +1,128 @@
+.toolbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Search input ──────────────────────────────────── */
+.searchWrap {
+  position: relative;
+  flex: 1;
+  min-width: 220px;
+}
+
+.searchIcon {
+  width: 40px;      /* Make it small and at the corner */
+  height: 40px;     /* Maintains the aspect ratio */
+  margin-bottom: 20px; 
+  opacity: 0.8;/* Optional: makes it look a bit more subtle */
+  position: absolute;
+  left: 0.85rem;
+  top: 25%
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  padding: 0.65rem 2.2rem 0.65rem 2.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  font-size: 0.9rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color var(--transition);
+  appearance: none;
+}
+
+.input:focus {
+  border-color: var(--accent);
+}
+
+.input::placeholder {
+  color: var(--muted);
+}
+
+/* Default search cancel button is redundant with our clear button, so we hide it */
+.input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.clearBtn {
+  position: absolute;
+  right: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1;
+  transition: color var(--transition);
+}
+
+.clearBtn:hover {
+  color: var(--ink);
+}
+/* 
+/* ── Filter pills ──────────────────────────────────── */
+.pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 0.42rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: transparent;
+  color: var(--muted);
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.pill:hover:not(.active) {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.pill.active {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+  */
+
+/* ── Result count ──────────────────────────────────── */
+.count {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    padding: 1rem 1.25rem;
+  }
+
+  .count {
+    margin-left: 0;
+    width: 100%;
+    text-align: right;
+  }
+}
+.submit-btn {
+  background-color: #1f2937;
+}
+ 

@@ -1,0 +1,194 @@
+.project-grid {
+  display: grid;
+  /* This line creates the responsive magic */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  font-family: 'Montserrat', Rethink sans-serif;
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.project-card { 
+  background: #43041b; /* Elegant dark red */
+  box-shadow: #43041b 0px 4px 12px; /* Subtle shadow for depth */ 
+  color: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  font-family: 'Montserrat', Rethink sans-serif;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #eee;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.card-image-container {
+  position: relative;
+  height: 200px;
+  margin-bottom: 1rem;
+}
+
+.card-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Keeps images from stretching */
+}
+.project-form {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 3rem;
+}
+
+.project-form h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #374151;
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-form input, 
+.project-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-family: 'Montserrat', Rethink sans-serif;
+}
+
+.project-form textarea {
+  height: 60px;
+  margin-bottom: 1rem;
+  resize: vertical;
+}
+
+.submit-btn {
+  background-color: #111827; /* Dark elegant black */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #374151;
+}
+
+/* Layout Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styling */
+.main-header {
+  padding: 2rem 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 3rem;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  letter-spacing: -1px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Responsiveness: The "Maintainable" Way */
+
+/* For Tablets (Screens smaller than 992px) */
+@media (max-width: 992px) {
+  .form-group {
+    grid-template-columns: 1fr; /* Form inputs stack on top of each other */
+  }
+}
+
+/* For Mobile (Screens smaller than 600px) */
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr; /* Single column for mobile */
+  }
+
+  .search-container {
+    max-width: 100%;
+  }
+}
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr; /* Sidebar is 350px, content takes the rest, beside the search icon */
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr; /* Stacks on top of each other on smaller screens */
+       }
+}
+.search-icon {
+  width: 40px;      /* Make it small and at the corner */
+  height: 40px;     /* Maintains the aspect ratio */
+  margin-bottom: 20px; 
+  opacity: 0.8;/* Optional: makes it look a bit more subtle */
+}
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 5px 12px;
+  border: 1px solid #ddd;
+  border-radius: 25px;    /* Makes it a pill shape */
+  background: white;
+  width: fit-content;
+}
+
+.search-input {
+  border:#43041b 1px solid;
+  outline: none;         /* Removes the blue highlight when clicking */
+  padding: 8px;
+}
