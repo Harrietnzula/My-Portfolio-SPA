@@ -13,28 +13,44 @@ function App() {
       title: "Modern Art Gallery Identity",
       category: "Branding",
       description: "A minimalist visual identity for a modern art gallery.",
+      image: "",
     },
     {
       id: 2,
       title: "E-commerce Product Modeling",
       category: "Web Design",
       description: "Responsive landing page for a tech startup.",
+      image: "",
     },
   ]);
 
-  // 2. State for searching/filtering
-  const [searchTerm, setSearchTerm] = useState("");
+  // 2. State for search input
+  const [searchQuery, setSearchQuery] = useState("");
 
-  // 3. Function to add a new project dynamically
+  // 3. State for active category filter
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  // 4. Add a new project
   const addProject = (newProject) => {
     setProjects([...projects, { ...newProject, id: Date.now() }]);
   };
 
-  // 4. Filter projects based on search term
-  const filteredProjects = projects.filter((project) =>
-    project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    project.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // 5. Delete a project by id
+  const deleteProject = (id) => {
+    setProjects(projects.filter((project) => project.id !== id));
+  };
+
+  // 6. Filter projects based on search query AND active category
+  const filteredProjects = projects.filter((project) => {
+    const matchesSearch =
+      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.category.toLowerCase().includes(searchQuery.toLowerCase());
+
+    const matchesFilter =
+      activeFilter === "All" || project.category === activeFilter;
+
+    return matchesSearch && matchesFilter;
+  });
 
   return (
     <div className="app-container">
@@ -42,12 +58,22 @@ function App() {
       <div className="container">
         <div className="dashboard-layout">
           <aside className="sidebar">
-            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            {/* Pass correct prop names that SearchBar expects */}
+            <SearchBar
+              searchQuery={searchQuery}
+              onSearchChange={setSearchQuery}
+              activeFilter={activeFilter}
+              onFilterChange={setActiveFilter}
+              resultCount={filteredProjects.length}
+            />
             <ProjectForm addProject={addProject} />
           </aside>
-
           <main className="content">
-            <ProjectList projects={filteredProjects} />
+            {/* Pass deleteProject down to ProjectList */}
+            <ProjectList
+              projects={filteredProjects}
+              onDelete={deleteProject}
+            />
           </main>
         </div>
       </div>

@@ -1,78 +1,219 @@
-.project-grid {
-  display: grid;
-  /* This line creates the responsive magic */
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  font-family: 'Montserrat', Rethink sans-serif;
-  gap: 2.5rem;
-  margin-top: 2rem;
+/* ==========================================
+   GLOBAL
+   ========================================== */
+* {
+  box-sizing: border-box;
 }
 
-.project-card { 
-  background: #43041b; /* Elegant dark red */
-  box-shadow: #43041b 0px 4px 12px; /* Subtle shadow for depth */ 
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f9fafb;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+.app-header {
+  background-color: #333;
   color: white;
-  padding: 1.5rem;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-family: 'Times New Roman', 'Montserrat', sans-serif;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.app-description {
+  margin: 0.25rem 0 0;
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+
+/* ==========================================
+   LAYOUT
+   ========================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 20px;
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   PROJECT GRID
+   ========================================== */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   PROJECT CARD
+   ========================================== */
+.project-card {
+  background: #43041b;
+  color: white;
   border-radius: 16px;
-  font-family: 'Montserrat', Rethink sans-serif;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #eee;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(67, 4, 27, 0.4);
 }
 
 .card-image-container {
-  position: relative;
-  height: 200px;
-  margin-bottom: 1rem;
+  height: 180px;
+  width: 100%;
+  background-color: #5a0a28; /* fallback color if image fails */
 }
 
-.card-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Keeps images from stretching */
+.card-content {
+  padding: 1.25rem;
 }
+
+.card-badge {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card-content h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.card-content p {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+/* Delete button inside card */
+.delete-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover {
+  background: rgba(255, 80, 80, 0.35);
+  border-color: rgba(255, 100, 100, 0.5);
+}
+
+/* ==========================================
+   NO RESULTS
+   ========================================== */
+.no-results {
+  text-align: center;
+  color: #6b7280;
+  padding: 3rem 1rem;
+  font-size: 1rem;
+}
+
+/* ==========================================
+   PROJECT FORM
+   ========================================== */
 .project-form {
   background: #ffffff;
   padding: 1.5rem;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .project-form h3 {
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
   color: #374151;
 }
 
 .form-group {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
-.project-form input, 
+@media (max-width: 992px) {
+  .form-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-form input,
 .project-form textarea {
   width: 100%;
-  padding: 10px;
+  padding: 10px 12px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
-  font-family: 'Montserrat', Rethink sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.project-form input:focus,
+.project-form textarea:focus {
+  border-color: #43041b;
 }
 
 .project-form textarea {
-  height: 60px;
-  margin-bottom: 1rem;
+  height: 70px;
+  margin-bottom: 0.75rem;
   resize: vertical;
 }
 
+.project-form > input[type="url"] {
+  margin-bottom: 0.75rem;
+}
+
 .submit-btn {
-  background-color: #111827; /* Dark elegant black */
+  background-color: #111827;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -82,6 +223,7 @@
   align-items: center;
   gap: 8px;
   font-weight: 500;
+  font-size: 0.875rem;
   transition: background 0.2s;
 }
 
@@ -89,106 +231,83 @@
   background-color: #374151;
 }
 
-/* Layout Container */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* ==========================================
+   SEARCH BAR
+   ========================================== */
+.search-container {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Header Styling */
-.main-header {
-  padding: 2rem 0;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 3rem;
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 25px;
+  padding: 8px 14px;
+  margin-bottom: 0.75rem;
+  background: #f9fafb;
 }
 
-.header-content {
+.search-icon {
+  width: 18px;
+  height: 18px;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.search-field {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  width: 100%;
+  color: #374151;
+}
+
+.search-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.logo {
+.filter-group {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
-.logo h1 {
-  font-size: 1.5rem;
-  letter-spacing: -1px;
-}
-
-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-}
-
-nav a {
-  text-decoration: none;
-  color: #666;
+.filter-pill {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
   font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-/* Responsiveness: The "Maintainable" Way */
-
-/* For Tablets (Screens smaller than 992px) */
-@media (max-width: 992px) {
-  .form-group {
-    grid-template-columns: 1fr; /* Form inputs stack on top of each other */
-  }
+.filter-pill:hover {
+  background: #e5e7eb;
 }
 
-/* For Mobile (Screens smaller than 600px) */
-@media (max-width: 600px) {
-  .header-content {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .project-grid {
-    grid-template-columns: 1fr; /* Single column for mobile */
-  }
-
-  .search-container {
-    max-width: 100%;
-  }
-}
-.dashboard-layout {
-  display: grid;
-  grid-template-columns: 350px 1fr; /* Sidebar is 350px, content takes the rest, beside the search icon */
-  gap: 40px;
-  align-items: start;
+.filter-pill.active {
+  background: #43041b;
+  color: white;
+  border-color: #43041b;
 }
 
-@media (max-width: 1024px) {
-  .dashboard-layout {
-    grid-template-columns: 1fr; /* Stacks on top of each other on smaller screens */
-       }
-}
-.search-icon {
-  width: 40px;      /* Make it small and at the corner */
-  height: 40px;     /* Maintains the aspect ratio */
-  margin-bottom: 20px; 
-  opacity: 0.8;/* Optional: makes it look a bit more subtle */
-}
-.search-wrapper {
-  display: flex;
-  align-items: center;
-  padding: 5px 12px;
-  border: 1px solid #ddd;
-  border-radius: 25px;    /* Makes it a pill shape */
-  background: white;
-  width: fit-content;
-}
-
-.search-input {
-  border:#43041b 1px solid;
-  outline: none;         /* Removes the blue highlight when clicking */
-  padding: 8px;
+.result-count {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  white-space: nowrap;
 }

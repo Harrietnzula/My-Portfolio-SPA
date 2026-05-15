@@ -1,27 +1,37 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react'; // Optional: for a nice "view" icon
+import { Trash2 } from 'lucide-react';
 
-const ProjectCard = ({ project, onClick, onDelete }) => {
+const ProjectCard = ({ project, onDelete }) => {
   return (
     <article className="project-card">
-      <div className="card-image-container">
-        
-        <div className="card-badge">{project.category}</div>
-        <div className="card-overlay">
-          <button className="card-button" onClick={() => onDelete(project.id)}>
-            
-            {/*Trash icon here*/}
-          </button>
+      {/* Image area — only shows if an image URL was provided */}
+      {project.image && (
+        <div
+          className="card-image-container"
+          style={{
+            backgroundImage: `url(${project.image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+      )}
 
-        </div>
-      </div>
-      
       <div className="card-content">
-        <div className="card-image" style={{ backgroundImage: `url(${project.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
-        
-            <h3>{project.title}</h3>
+        {/* Category badge */}
+        <div className="card-badge">{project.category}</div>
+
+        <h3>{project.title}</h3>
         <p>{project.description}</p>
-      
+
+        {/* Delete button with trash icon */}
+        <button
+          className="delete-btn"
+          onClick={() => onDelete(project.id)}
+          aria-label={`Delete ${project.title}`}
+        >
+          <Trash2 size={16} />
+          Remove
+        </button>
       </div>
     </article>
   );
