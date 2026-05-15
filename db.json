@@ -1,0 +1,18 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Modern Art Gallery Identity",
+      "category": "Branding",
+      "description": "A minimalist visual identity for a modern art gallery.",
+      "image": ""
+    },
+    {
+      "id": 2,
+      "title": "E-commerce Product Modeling",
+      "category": "Web Design",
+      "description": "Responsive landing page for a tech startup.",
+      "image": ""
+    }
+  ]
+}
